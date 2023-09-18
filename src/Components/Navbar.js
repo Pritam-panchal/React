@@ -1,35 +1,16 @@
-import React from "react"
-import PropTypes from 'prop-types'
-// import { Link } from "react-router-dom"
-
-export default function Navbar(props) {
+import React from "react";
+export default function Navbar(props){
     return(
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">{props.title}</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">{props.hom}</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link active" href="#">About</a>
-        </li>
-      </ul>
-    </div>
+        <>
+        <nav className={`navbar navbar-expand-lg bg-${props.Mode} navbar-${props.Mode}`}>
+  <div className={`container-fluid`}>
+    <a className={`navbar-brand  mx-5 `}><strong>TextUtils</strong></a>
+    <div className="form-check form-switch  ">
+  <input className="form-check-input" onClick={props.togelMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+  <label className="form-check-label me-5" htmlFor="flexSwitchCheckDefault">{props.darkLight}</label>
+</div>
   </div>
 </nav>
+        </>
     )
-    
 }
-Navbar.propTypes={
-    title: PropTypes.string,
-    hom:PropTypes.string.isRequired
-}
-Navbar.defaultProps={
-    title: "Tech"
-}
-  

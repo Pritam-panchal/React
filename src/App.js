@@ -1,41 +1,48 @@
-import React,{ useState } from 'react';
-import './App.css'; 
+import logo from './logo.svg';
+import './App.css';
+import TextForm from './Components/TextForm';
 import Alert from './Components/Alert';
 import Navbar from './Components/Navbar';
-import TextForm from './Components/TextForm';
-import About from './Components/About';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import { useState } from 'react';
+
 function App() {
-  const[alert,setAlert]=useState(null);
-  function showAlert(message, type) {
-    setAlert({
-      msg: message,
-      typ: type
-    })
-    setTimeout(() => {
-      setAlert(null)
-    }, 2000);
+const[Mode,setMode]=useState("light");
+const[alert,setAlert]=useState(null);
+const[textCl,setTextCl]=useState("dark");
+const[darkLight,setdarklight]=useState("Dark");
+
+function showAlert(msg, typ){
+  setAlert({
+    msg: msg,
+    type: typ
+  })
+  setTimeout(() => {
+    setAlert(null)
+  }, 1500);
+}
+function togelMode() {
+  if(Mode=="dark"){
+    setMode("light");
+    setTextCl("dark");
+    setdarklight("Dark");
+    document.body.style.backgroundColor="white";
+    showAlert("Light Mode has been Enabled.","dark")
+  }else{
+    setdarklight("Light");
+    setMode("dark");
+    setTextCl("white");
+    document.body.style.backgroundColor="black";
+    showAlert("Dark Mode has been Enabled.","light")
   }
-  
+}
   return (
-    <>
-    {/* <Router> */}
-   <Navbar hom="Home"/><Alert alert={alert}  />
-   <TextForm title="Enter something..." showAlert={showAlert}/>
-   {/* <Routes>
-          <Route path="/" element={}></Route>
-          <Route path="/about" element={ <About/>}></Route>
-        </Routes> 
-   
-    </Router> */}
-    </>
+   <>
+   <Navbar Mode={Mode} togelMode={togelMode} xdarkLight={darkLight} textClr={textCl}/>
+   <Alert alert={alert}/>
+   <TextForm heading="Try TextUtils - For Modify Your Text" textClr={textCl} showAlert={showAlert}   Mode={Mode}/>
+
+   </>
   );
 }
-
 
 export default App;
