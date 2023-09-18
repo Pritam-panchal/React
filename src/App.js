@@ -37,6 +37,7 @@ function togelMode() {
 }
   return (
    <>
+   <h1>Pritam</h1>
    <Navbar Mode={Mode} togelMode={togelMode} xdarkLight={darkLight} textClr={textCl}/>
    <Alert alert={alert}/>
    <TextForm heading="Try TextUtils - For Modify Your Text" textClr={textCl} showAlert={showAlert}   Mode={Mode}/>
